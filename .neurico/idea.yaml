@@ -1,0 +1,29 @@
+idea:
+  title: Do Language Models Have Tongue Twisters?
+  domain: nlp
+  hypothesis: 'There exist specific strings or patterns, such as "SolidGoldMagikarp"
+    or long documents with small misspellings, that language models struggle to repeat
+    or reproduce accurately when prompted.
+
+    '
+  background:
+    description: 'Are there strings where, if you ask models to repeat them, they
+      struggle?
+
+      Certainly, here are two:
+
+      SolidGoldMagikarp
+
+      Long documents with small mispellings (can''t find a citation for this, maybe
+      someone should write a paper?)
+
+      '
+  metadata:
+    author: Ari Holtzman
+    source: IdeaHub
+    source_url: https://hypogenic.ai/ideahub/idea/oZ5mulx2Q8k3Z6qkzgD6
+    idea_id: do_language_models_have_tongue_20260323_063411_c69e932b
+    created_at: '2026-03-23T06:34:11.654493'
+    status: submitted
+    github_repo_name: llm-tongue-twisters-claude
+    github_repo_url: https://github.com/Hypogenic-AI/llm-tongue-twisters-claude
