@@ -1,0 +1,19 @@
+\section{Introduction}
+\label{sec:intro}
+
+When a person struggles to say ``she sells seashells by the seashore,'' we call it a tongue twister---a string that is trivially easy to understand but surprisingly hard to reproduce. Do language models have analogous blind spots? Are there strings that a model can process in context yet fails to copy verbatim when asked?
+
+This question is more than a curiosity. Language models are now routinely used for tasks that demand faithful text reproduction: copying code snippets, quoting passages, transcribing handwritten text, and reformatting structured data. A systematic failure to reproduce certain inputs undermines the reliability of these applications and exposes potential security vulnerabilities \citep{geiping2024coercing}. The discovery of \glitchtokens---vocabulary entries such as \magikarp that caused GPT-2 and GPT-3 to produce garbled output, hallucinations, or outright refusals \citep{rumbelow2023solidgoldmagikarp}---demonstrated that such blind spots exist and sparked a growing body of research on detecting and mitigating them \citep{land2024fishing, li2024glitch, zhang2024glitchprober, wu2024glitchminer}.
+
+However, existing work has three important limitations. First, most studies focus on \emph{single-token} anomalies in \emph{open-weight} models, leaving unclear whether the phenomenon persists in the latest closed-source systems. Second, no prior work tests \emph{passage-level} reproduction---whether models can faithfully copy entire documents, including documents with deliberate errors. Third, the interaction between text \emph{length}, text \emph{content}, and reproduction fidelity has not been systematically explored.
+
+We address these gaps with a comprehensive evaluation of text reproduction across three models in the GPT-4.1 family (\gptfull, \gptmini, \gptomini). We test five categories of stimuli---glitch tokens, control tokens, adversarial Unicode strings, misspelled documents at varying densities, and extreme-length texts---using a simple but powerful methodology: present a string and ask the model to repeat it exactly, then measure the deviation. Across approximately 500 API calls, we find that:
+
+\begin{itemize}[leftmargin=*,itemsep=0pt,topsep=0pt]
+    \item We show that \textbf{classic \glitchtokens are completely resolved} in 2025-era models: all 50 tested tokens, including \magikarp, are reproduced with 100\% exact match across all three models.
+    \item We demonstrate that \textbf{models faithfully preserve misspellings} without auto-correcting, achieving 0\% correction rate even at 50\% misspelling density---contradicting a natural prior that LLMs would ``fix'' obvious errors.
+    \item We discover a \textbf{new class of tongue twisters at extreme text lengths}: \gptfull truncates clean text to $\sim$50 characters at lengths $\geq$8k, while perfectly reproducing 25k characters of misspelled text---a paradoxical asymmetry suggesting content-aware output filtering.
+    \item We document \textbf{hallucination under repetition}: \gptmini produces output 5.15$\times$ the input length when asked to reproduce 20k characters of repetitive text, entering a generative loop.
+\end{itemize}
+
+The rest of the paper is organized as follows. \Secref{sec:related} surveys related work on \glitchtokens and text robustness. \Secref{sec:method} describes our experimental methodology and datasets. \Secref{sec:results} presents results across all experiments. \Secref{sec:discussion} discusses implications and limitations, and \secref{sec:conclusion} concludes.

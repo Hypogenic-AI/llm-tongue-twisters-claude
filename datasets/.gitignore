@@ -1,0 +1,11 @@
+# Exclude large data files from git
+*.jsonl.gz
+*.jsonl
+*.parquet
+
+# But include documentation and small files
+!.gitignore
+!README.md
+!**/README.md
+!**/*.csv
+!**/*.json

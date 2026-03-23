@@ -1,0 +1,137 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Single Token Reproduction}
+
+\Tabref{tab:token_results} presents exact match rates and average normalized edit distances for single token reproduction on \gptfull. Control tokens achieve 100\% exact match. Glitch tokens achieve 98\% (49/50), with the sole failure being a leading space stripped from \texttt{\ SolidGoldMagikarp}---a whitespace normalization issue rather than a semantic failure. Adversarial strings achieve 90\% (18/20), with failures on escaped Unicode sequences (\texttt{\textbackslash u0048\textbackslash u0065\textbackslash u006C\textbackslash u006F} $\rightarrow$ \texttt{Hello}, decoded instead of preserved as literal characters) and flag emoji tag sequences (invisible tag characters dropped).
+
+\begin{table}[t]
+    \centering
+    \caption{Single token reproduction results for \gptfull using the direct prompt template. Exact match (EM) rate and average normalized edit distance (NED) across stimulus categories. Best results in \textbf{bold}.}
+    \label{tab:token_results}
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        \textbf{Category} & \textbf{EM (\%)} & \textbf{Avg. NED} \\
+        \midrule
+        Control tokens ($n=50$) & \textbf{100} & \textbf{0.000} \\
+        Glitch tokens ($n=50$) & 98 & 0.001 \\
+        Adversarial strings ($n=20$) & 90 & 0.093 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+Cross-model evaluation (V3) confirmed this finding: all three models (\gptfull, \gptmini, \gptomini) achieved 100\% exact match on all 50 glitch tokens, including \magikarp, \texttt{TheNitromeFan}, \texttt{rawdownloadcloneembedreportprint}, and \texttt{PsychExpandoExceptionObjectSyntax}. The classic \glitchtoken phenomenon, which caused severe failures in GPT-2, GPT-3, and early GPT-4, is completely resolved in the GPT-4.1 family.
+
+\subsection{Document Reproduction and Misspelling Preservation}
+
+\para{Short--medium documents.}
+All three models achieved 100\% exact match on both clean and misspelled versions of documents ranging from 50 to 500 words. Models did not auto-correct any misspellings.
+
+\para{Misspelling density.}
+\Tabref{tab:misspelling} shows reproduction accuracy as a function of misspelling density for an $\sim$800-character document. All three models achieved 100\% exact match at every density level from 0\% to 50\%. This result directly contradicts the hypothesis that models would auto-correct errors: even when half of all words contain character transpositions, models reproduce them faithfully.
+
+\begin{table}[t]
+    \centering
+    \caption{Exact match rate (\%) by misspelling density for an $\sim$800-character document. All models achieve perfect reproduction regardless of error density.}
+    \label{tab:misspelling}
+    \begin{tabular}{@{}lcccccc@{}}
+        \toprule
+        \textbf{Model} & \textbf{0\%} & \textbf{5\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{50\%} \\
+        \midrule
+        \gptfull & \textbf{100} & \textbf{100} & \textbf{100} & \textbf{100} & \textbf{100} & \textbf{100} \\
+        \gptmini & \textbf{100} & \textbf{100} & \textbf{100} & \textbf{100} & \textbf{100} & \textbf{100} \\
+        \gptomini & \textbf{100} & \textbf{100} & \textbf{100} & \textbf{100} & \textbf{100} & \textbf{100} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Special Character Preservation}
+
+\Tabref{tab:special} summarizes results for special character types. All three models perfectly preserved zero-width characters, Cyrillic homoglyphs, code with syntax errors, near-miss famous phrases, random alphanumeric strings, and hex strings. These results indicate that modern models handle challenging Unicode and adversarial formatting with high fidelity.
+
+\begin{table}[t]
+    \centering
+    \caption{Special character preservation across all three models. All test types achieved 100\% exact match.}
+    \label{tab:special}
+    \begin{tabular}{@{}lcc@{}}
+        \toprule
+        \textbf{Test type} & \textbf{$N$} & \textbf{EM (\%)} \\
+        \midrule
+        Zero-width characters & 5 & \textbf{100} \\
+        Cyrillic homoglyphs & 5 & \textbf{100} \\
+        Code with syntax errors & 1 & \textbf{100} \\
+        Near-miss famous phrases & 5 & \textbf{100} \\
+        Random alphanumeric & 5 & \textbf{100} \\
+        Hex strings & 4 & \textbf{100} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Extreme-Length Reproduction}
+\label{sec:extreme_length}
+
+The most striking findings emerge at extreme text lengths. \Tabref{tab:extreme} presents reproduction outcomes across three content types (clean varied, misspelled, repetitive) and six length conditions (5k--25k characters).
+
+\begin{table}[t]
+    \centering
+    \caption{Extreme-length reproduction results. \checkmark\ = exact match, \ding{55}\ = failure, \ding{55}\ding{55}\ = catastrophic failure (hallucination), --- = not tested. Length ratio (LR) and edit distance (ED) shown for failures.}
+    \label{tab:extreme}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}llcccccc@{}}
+        \toprule
+        \textbf{Model} & \textbf{Content type} & \textbf{5k} & \textbf{8k} & \textbf{10k} & \textbf{15k} & \textbf{20k} & \textbf{25k} \\
+        \midrule
+        \multirow{3}{*}{\gptfull}
+        & Clean (varied) & \checkmark & \ding{55}\ {\scriptsize LR=0.005} & \checkmark & \ding{55}\ {\scriptsize LR=0.005} & --- & \ding{55}\ {\scriptsize LR=0.005} \\
+        & Misspelled & \checkmark & \checkmark & \checkmark & \checkmark & --- & \checkmark \\
+        & Repetitive & \checkmark & --- & \ding{55} & --- & \ding{55} & --- \\
+        \midrule
+        \multirow{3}{*}{\gptmini}
+        & Clean (varied) & \checkmark & \checkmark & \checkmark & \checkmark & --- & \checkmark \\
+        & Misspelled & \checkmark & \checkmark & \checkmark & \checkmark & --- & \checkmark \\
+        & Repetitive & \checkmark & --- & \ding{55} & --- & \ding{55}\ding{55}\ {\scriptsize LR=5.15} & --- \\
+        \midrule
+        \multirow{3}{*}{\gptomini}
+        & Clean (varied) & \checkmark & \checkmark & \ding{55} & \checkmark & --- & \ding{55} \\
+        & Misspelled & \checkmark & \checkmark & \checkmark & $\approx$\checkmark & --- & \ding{55} \\
+        & Repetitive & \ding{55} & --- & \ding{55} & --- & \ding{55} & --- \\
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}
+
+Three distinct failure modes emerge:
+
+\para{Content-dependent truncation (\gptfull).}
+\gptfull exhibits the most surprising behavior: it truncates clean varied text to $\sim$50 characters (length ratio $\approx 0.005$) at lengths $\geq$8k, effectively refusing the task. Yet the same model perfectly reproduces 25,000 characters of misspelled text. This asymmetry---clean text is \emph{harder} to reproduce than misspelled text---is the opposite of what one would expect from a capability limitation. It suggests that the model (or its serving infrastructure) applies content-dependent output filtering, possibly related to anti-copying or deduplication mechanisms that trigger on ``standard'' text but not on text containing obvious errors.
+
+\para{Hallucinated extension (\gptmini on repetitive text).}
+When asked to reproduce 20,000 characters of repetitive text (a paragraph repeated many times), \gptmini produced output 5.15$\times$ the input length---an edit distance of 82,995 characters. The model appears to lose track of repetition count and enters a generative loop, producing far more text than requested.
+
+\para{Progressive degradation (\gptomini on repetitive text).}
+\gptomini shows a monotonic decline in reproduction quality with increasing repetitive text length: at 5k characters, the edit distance is 278 (length ratio 1.06); at 10k, it rises to 1,554 (ratio 0.84); and at 20k, it reaches 8,738 (ratio 0.56). The model progressively truncates its output, losing more content at each length increment.
+
+\subsection{Summary of Hypothesis Tests}
+
+\Tabref{tab:hypotheses} summarizes the status of each hypothesis.
+
+\begin{table}[t]
+    \centering
+    \caption{Summary of hypothesis testing. Each hypothesis is evaluated against the experimental evidence.}
+    \label{tab:hypotheses}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        \textbf{Hypothesis} & \textbf{Result} & \textbf{Evidence} \\
+        \midrule
+        H1: Glitch tokens cause failures in modern LLMs & Refuted & 100\% EM across all 3 models \\
+        H2: Adversarial strings have higher error rates & Partially supported & 90\% vs.\ 100\% for controls \\
+        H3: Misspelled docs are harder to reproduce & Refuted & 100\% EM at all densities \\
+        H3a: Models auto-correct misspellings & Refuted & 0\% correction rate at 50\% density \\
+        H3b: Effect scales with document length & Partially supported & Length causes failures (not misspellings) \\
+        \emph{New}: Length causes reproduction failures & \textbf{Supported} & Systematic failures above 8k--10k chars \\
+        \emph{New}: Clean text harder than misspelled & \textbf{Supported} & \gptfull truncates clean, preserves misspelled \\
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}

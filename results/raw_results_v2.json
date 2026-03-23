@@ -1,0 +1,572 @@
+[
+  {
+    "experiment": "long_document",
+    "category": "document_clean",
+    "doc_name": "long_ai_history",
+    "doc_length": "very_long",
+    "n_misspellings": 95,
+    "stimulus_len": 2422,
+    "model": "gpt-4.1",
+    "template": "direct",
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The development of artificial intelligence has been one of the most transformative technological advances of the twenty-first century. Beginning with early neural network research in the nineteen fifties, the field has gone through several waves of enthusiasm and disappointment, often referred to as AI winters. However, the current wave, driven by deep learning and massive computational resources, has produced results that exceed even the most optimistic predictions of earlier decades.\n\nLarge language models represent perhaps the most visible achievement of modern artificial intelligence. These models, trained on billions of words of text from the internet, books, and other sources, can generate remarkably human-like text, answer questions, write code, and perform tasks that were considered impossible just a few years ago. The transformer architecture, introduced in the landmark paper \"Attention Is All You Need\" by Vaswani and colleagues in twenty seventeen, provided the foundation for these advances.\n\nDespite their impressive capabilities, language models have significant limitations. They can produce confident-sounding but incorrect information, a phenomenon known as hallucination. They struggle with mathematical reasoning, often making errors in multi-step calculations. They cannot truly understand causality or maintain persistent memory across conversations. These limitations have important implications for how these systems should be deployed and trusted.\n\nThe ethical considerations surrounding artificial intelligence are equally complex. Questions about bias in training data, environmental impact of large-scale model training, potential job displacement, and the concentration of AI capabilities in a few large technology companies are actively debated. Researchers and policymakers around the world are working to establish frameworks for responsible AI development that balance innovation with safety and fairness.\n\nLooking forward, the field continues to evolve rapidly. Multimodal models that can process text, images, audio, and video simultaneously are becoming more capable. Reasoning abilities are improving through techniques like chain-of-thought prompting and reinforcement learning from human feedback. The integration of AI systems with external tools and databases promises to address some of the current limitations around factual accuracy and real-time information access."
+  },
+  {
+    "experiment": "long_document",
+    "category": "document_misspelled",
+    "doc_name": "long_ai_history",
+    "doc_length": "very_long",
+    "n_misspellings": 95,
+    "stimulus_len": 2394,
+    "model": "gpt-4.1",
+    "template": "direct",
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The developement of artifical intelligence has been one of the most tranformative technologicle advances of the twenty-first centruey. Begining with early nueral network reserach in the ninteen fifties, the feild has gone through several wavse of enthusiasm and disapointment, often refered to as AI wintres. However, the curent wave, dirven by deep leanring and masive computational resourses, has produced resutls that excede even the most optimisitc predictoins of eariler decades.\n\nLarge langauge models represnet perhaps the most visable acheivement of modern artifical intelligence. These modlse, trained on billoins of words of text from the intarnet, books, and other sourses, can generate remarkabely human-like text, answre questions, write cdoe, and preform tasks that were considred impossible just a few yaers ago. The transfomer architecture, introduced in the landmrak paper \"Attention Is All You Nede\" by Vaswani and colleaguse in twenty seventen, provided the foundaiton for these advacnes.\n\nDespite thier impressive capabilites, langauge models have signficant limitatoins. They can produce confidnet-sounding but incorect information, a phenomonon known as hallucinatoin. They strugle with mathmatical reasoning, often makign errors in multi-step calculatoins. They canot truly undersatnd causality or maintain persistant memory accross conversations. These limitatoins have importnat implications for how these systmes should be deployde and trustde.\n\nThe ethcial considerations surounding artifical intelligence are equaly complex. Questoins about bais in training data, enviromental impact of large-scale model traning, potenial job displacment, and the concentratoin of AI capabilites in a few large technolgy companies are activley debated. Reserchers and policymakres around the world are workign to establsih frameworks for responsibe AI developement that balacne innovation with saftey and fariness.\n\nLooking forwrad, the feild continues to evolev rapidly. Multimodl models that can processe text, images, auido, and video simultanously are becomign more capabel. Reasioning abilities are improvign through techniquse like chain-of-thougth prompting and reinforcment learning from human feedbakc. The integratoin of AI systmes with external tools and databses promises to addres some of the curent limitatoins around facutal accuracy and real-time informatoin access.",
+    "n_words_corrected": 0,
+    "n_words_preserved": 114,
+    "n_words_other": 0,
+    "correction_rate": 0.0,
+    "corrections_detail": [
+      {
+        "index": 1,
+        "misspelled": "developement",
+        "clean": "development",
+        "output": "developement",
+        "corrected": false
+      },
+      {
+        "index": 3,
+        "misspelled": "artifical",
+        "clean": "artificial",
+        "output": "artifical",
+        "corrected": false
+      },
+      {
+        "index": 11,
+        "misspelled": "tranformative",
+        "clean": "transformative",
+        "output": "tranformative",
+        "corrected": false
+      },
+      {
+        "index": 12,
+        "misspelled": "technologicle",
+        "clean": "technological",
+        "output": "technologicle",
+        "corrected": false
+      },
+      {
+        "index": 17,
+        "misspelled": "centruey.",
+        "clean": "century.",
+        "output": "centruey.",
+        "corrected": false
+      },
+      {
+        "index": 18,
+        "misspelled": "Begining",
+        "clean": "Beginning",
+        "output": "Begining",
+        "corrected": false
+      },
+      {
+        "index": 21,
+        "misspelled": "nueral",
+        "clean": "neural",
+        "output": "nueral",
+        "corrected": false
+      },
+      {
+        "index": 23,
+        "misspelled": "reserach",
+        "clean": "research",
+        "output": "reserach",
+        "corrected": false
+      },
+      {
+        "index": 26,
+        "misspelled": "ninteen",
+        "clean": "nineteen",
+        "output": "ninteen",
+        "corrected": false
+      },
+      {
+        "index": 29,
+        "misspelled": "feild",
+        "clean": "field",
+        "output": "feild",
+        "corrected": false
+      },
+      {
+        "index": 34,
+        "misspelled": "wavse",
+        "clean": "waves",
+        "output": "wavse",
+        "corrected": false
+      },
+      {
+        "index": 38,
+        "misspelled": "disapointment,",
+        "clean": "disappointment,",
+        "output": "disapointment,",
+        "corrected": false
+      },
+      {
+        "index": 40,
+        "misspelled": "refered",
+        "clean": "referred",
+        "output": "refered",
+        "corrected": false
+      },
+      {
+        "index": 44,
+        "misspelled": "wintres.",
+        "clean": "winters.",
+        "output": "wintres.",
+        "corrected": false
+      },
+      {
+        "index": 47,
+        "misspelled": "curent",
+        "clean": "current",
+        "output": "curent",
+        "corrected": false
+      },
+      {
+        "index": 49,
+        "misspelled": "dirven",
+        "clean": "driven",
+        "output": "dirven",
+        "corrected": false
+      },
+      {
+        "index": 52,
+        "misspelled": "leanring",
+        "clean": "learning",
+        "output": "leanring",
+        "corrected": false
+      },
+      {
+        "index": 54,
+        "misspelled": "masive",
+        "clean": "massive",
+        "output": "masive",
+        "corrected": false
+      },
+      {
+        "index": 56,
+        "misspelled": "resourses,",
+        "clean": "resources,",
+        "output": "resourses,",
+        "corrected": false
+      },
+      {
+        "index": 59,
+        "misspelled": "resutls",
+        "clean": "results",
+        "output": "resutls",
+        "corrected": false
+      }
+    ],
+    "dist_to_clean": 181,
+    "dist_to_misspelled": 0,
+    "auto_corrected": false
+  },
+  {
+    "experiment": "long_document",
+    "category": "document_clean",
+    "doc_name": "subtle_python_desc",
+    "doc_length": "medium",
+    "n_misspellings": 3,
+    "stimulus_len": 523,
+    "model": "gpt-4.1",
+    "template": "direct",
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "Python is a high-level programming language known for its clear syntax and readability. Created by Guido van Rossum and first released in nineteen ninety-one, Python has become one of the most popular languages in the world. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming. Python's extensive standard library and rich ecosystem of third-party packages make it suitable for web development, data analysis, machine learning, scientific computing, and automation."
+  },
+  {
+    "experiment": "long_document",
+    "category": "document_misspelled",
+    "doc_name": "subtle_python_desc",
+    "doc_length": "medium",
+    "n_misspellings": 3,
+    "stimulus_len": 523,
+    "model": "gpt-4.1",
+    "template": "direct",
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "Python is a high-level programming langauge known for its clear syntax and readability. Created by Guido van Rossum and first released in nineteen ninety-one, Python has become one of the most popular langauges in the world. It supports multiple programming paradigms, including procedural, object-oriented, and functional programming. Python's extensive standard librayr and rich ecosystem of third-party packages make it suitable for web developemnt, data analysis, machine learning, scientific computing, and automation.",
+    "n_words_corrected": 0,
+    "n_words_preserved": 4,
+    "n_words_other": 0,
+    "correction_rate": 0.0,
+    "corrections_detail": [
+      {
+        "index": 5,
+        "misspelled": "langauge",
+        "clean": "language",
+        "output": "langauge",
+        "corrected": false
+      },
+      {
+        "index": 32,
+        "misspelled": "langauges",
+        "clean": "languages",
+        "output": "langauges",
+        "corrected": false
+      },
+      {
+        "index": 50,
+        "misspelled": "librayr",
+        "clean": "library",
+        "output": "librayr",
+        "corrected": false
+      },
+      {
+        "index": 62,
+        "misspelled": "developemnt,",
+        "clean": "development,",
+        "output": "developemnt,",
+        "corrected": false
+      }
+    ],
+    "dist_to_clean": 8,
+    "dist_to_misspelled": 0,
+    "auto_corrected": false
+  },
+  {
+    "experiment": "long_document",
+    "category": "document_clean",
+    "doc_name": "factual_errors",
+    "doc_length": "short",
+    "n_misspellings": 2,
+    "stimulus_len": 399,
+    "model": "gpt-4.1",
+    "template": "direct",
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The Earth orbits the Sun at an average distance of approximately 150 million kilometers. A year on Earth is approximately 365.25 days long, which is why we have leap years every four years. The Moon orbits the Earth at an average distance of about 384,400 kilometers, and it takes approximately 27.3 days to complete one orbit. Light from the Sun takes about 8 minutes and 20 seconds to reach Earth."
+  },
+  {
+    "experiment": "long_document",
+    "category": "document_misspelled",
+    "doc_name": "factual_errors",
+    "doc_length": "short",
+    "n_misspellings": 2,
+    "stimulus_len": 399,
+    "model": "gpt-4.1",
+    "template": "direct",
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The Earth orbits the Sun at an average distance of approximately 150 million kilometers. A year on Earth is approximately 364.25 days long, which is why we have leap years every four years. The Moon orbits the Earth at an average distance of about 384,400 kilometers, and it takes approximately 27.3 days to complete one orbit. Light from the Sun takes about 8 minutes and 40 seconds to reach Earth.",
+    "n_words_corrected": 0,
+    "n_words_preserved": 2,
+    "n_words_other": 0,
+    "correction_rate": 0.0,
+    "corrections_detail": [
+      {
+        "index": 20,
+        "misspelled": "364.25",
+        "clean": "365.25",
+        "output": "364.25",
+        "corrected": false
+      },
+      {
+        "index": 65,
+        "misspelled": "40",
+        "clean": "20",
+        "output": "40",
+        "corrected": false
+      }
+    ],
+    "dist_to_clean": 2,
+    "dist_to_misspelled": 0,
+    "auto_corrected": false
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "The username SolidGoldMagikarp was registered on the forum last Tuesday.",
+    "glitch_word": "SolidGoldMagikarp",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The username SolidGoldMagikarp was registered on the forum last Tuesday."
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "Please search for TheNitromeFan in the database and return all results.",
+    "glitch_word": "TheNitromeFan",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "Please search for TheNitromeFan in the database and return all results."
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "The function rawdownloadcloneembedreportprint handles file operations.",
+    "glitch_word": "rawdownloadcloneembedreportprint",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The function rawdownloadcloneembedreportprint handles file operations."
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "User petertodd submitted a pull request to the main branch.",
+    "glitch_word": "petertodd",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "User petertodd submitted a pull request to the main branch."
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "The class PsychExpandoExceptionObjectSyntax extends BaseException.",
+    "glitch_word": "PsychExpandoExceptionObjectSyntax",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The class PsychExpandoExceptionObjectSyntax extends BaseException."
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "Import the module cloneembedaliased from the utils package.",
+    "glitch_word": "cloneembedaliased",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "Import the module cloneembedaliased from the utils package."
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "The variable guiActiveUn controls the interface state.",
+    "glitch_word": "guiActiveUn",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The variable guiActiveUn controls the interface state."
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "Channel StreamerBot is currently broadcasting live content.",
+    "glitch_word": "StreamerBot",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "Channel StreamerBot is currently broadcasting live content."
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "The tag InstoreAndOnline indicates product availability.",
+    "glitch_word": "InstoreAndOnline",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The tag InstoreAndOnline indicates product availability."
+  },
+  {
+    "experiment": "embedded_glitch",
+    "category": "embedded_glitch",
+    "stimulus": "Handler ActionCodeHandler processes verification requests.",
+    "glitch_word": "ActionCodeHandler",
+    "model": "gpt-4.1",
+    "template": "direct",
+    "glitch_word_preserved": true,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "Handler ActionCodeHandler processes verification requests."
+  },
+  {
+    "experiment": "consistency",
+    "category": "consistency_glitch",
+    "stimulus": "SolidGoldMagikarp",
+    "model": "gpt-4.1",
+    "n_runs": 5,
+    "n_exact_matches": 5,
+    "n_unique_outputs": 1,
+    "outputs": [
+      "SolidGoldMagikarp",
+      "SolidGoldMagikarp",
+      "SolidGoldMagikarp",
+      "SolidGoldMagikarp",
+      "SolidGoldMagikarp"
+    ]
+  },
+  {
+    "experiment": "consistency",
+    "category": "consistency_glitch",
+    "stimulus": "TheNitromeFan",
+    "model": "gpt-4.1",
+    "n_runs": 5,
+    "n_exact_matches": 5,
+    "n_unique_outputs": 1,
+    "outputs": [
+      "TheNitromeFan",
+      "TheNitromeFan",
+      "TheNitromeFan",
+      "TheNitromeFan",
+      "TheNitromeFan"
+    ]
+  },
+  {
+    "experiment": "consistency",
+    "category": "consistency_control",
+    "stimulus": "computer",
+    "model": "gpt-4.1",
+    "n_runs": 5,
+    "n_exact_matches": 5,
+    "n_unique_outputs": 1,
+    "outputs": [
+      "computer",
+      "computer",
+      "computer",
+      "computer",
+      "computer"
+    ]
+  },
+  {
+    "experiment": "consistency",
+    "category": "consistency_control",
+    "stimulus": "algorithm",
+    "model": "gpt-4.1",
+    "n_runs": 5,
+    "n_exact_matches": 5,
+    "n_unique_outputs": 1,
+    "outputs": [
+      "algorithm",
+      "algorithm",
+      "algorithm",
+      "algorithm",
+      "algorithm"
+    ]
+  },
+  {
+    "experiment": "instruction_pressure",
+    "category": "instruction_pressure",
+    "prompt_name": "basic",
+    "model": "gpt-4.1",
+    "doc_name": "long_ai_history",
+    "n_words_corrected": 0,
+    "n_words_preserved": 114,
+    "n_words_other": 0,
+    "correction_rate": 0.0,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The developement of artifical intelligence has been one of the most tranformative technologicle advances of the twenty-first centruey. Begining with early nueral network reserach in the ninteen fifties, the feild has gone through several wavse of enthusiasm and disapointment, often refered to as AI wintres. However, the curent wave, dirven by deep leanring and masive computational resourses, has produced resutls that excede even the most optimisitc predictoins of eariler decades.\n\nLarge langauge models represnet perhaps the most visable acheivement of modern artifical intelligence. These modlse, trained on billoins of words of text from the intarnet, books, and other sourses, can generate remarkabely human-like text, answre questions, write cdoe, and preform tasks that were considred impossible just a few yaers ago. The transfomer architecture, introduced in the landmrak paper \"Attention Is All You Nede\" by Vaswani and colleaguse in twenty seventen, provided the foundaiton for these advacnes.\n\nDespite thier impressive capabilites, langauge models have signficant limitatoins. They can produce confidnet-sounding but incorect information, a phenomonon known as hallucinatoin. They strugle with mathmatical reasoning, often makign errors in multi-step calculatoins. They canot truly undersatnd causality or maintain persistant memory accross conversations. These limitatoins have importnat implications for how these systmes should be deployde and trustde.\n\nThe ethcial considerations surounding artifical intelligence are equaly complex. Questoins about bais in training data, enviromental impact of large-scale model traning, potenial job displacment, and the concentratoin of AI capabilites in a few large technolgy companies are activley debated. Reserchers and policymakres around the world are workign to establsih frameworks for responsibe AI developement that balacne innovation with saftey and fariness.\n\nLooking forwrad, the feild continues to evolev rapidly. Multimodl models that can processe text, images, auido, and video simultanously are becomign more capabel. Reasioning abilities are improvign through techniquse like chain-of-thougth prompting and reinforcment learning from human feedbakc. The integratoin of AI systmes with external tools and databses promises to addres some of the curent limitatoins around facutal accuracy and real-time informatoin access."
+  },
+  {
+    "experiment": "instruction_pressure",
+    "category": "instruction_pressure",
+    "prompt_name": "emphatic",
+    "model": "gpt-4.1",
+    "doc_name": "long_ai_history",
+    "n_words_corrected": 0,
+    "n_words_preserved": 114,
+    "n_words_other": 0,
+    "correction_rate": 0.0,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The developement of artifical intelligence has been one of the most tranformative technologicle advances of the twenty-first centruey. Begining with early nueral network reserach in the ninteen fifties, the feild has gone through several wavse of enthusiasm and disapointment, often refered to as AI wintres. However, the curent wave, dirven by deep leanring and masive computational resourses, has produced resutls that excede even the most optimisitc predictoins of eariler decades.\n\nLarge langauge models represnet perhaps the most visable acheivement of modern artifical intelligence. These modlse, trained on billoins of words of text from the intarnet, books, and other sourses, can generate remarkabely human-like text, answre questions, write cdoe, and preform tasks that were considred impossible just a few yaers ago. The transfomer architecture, introduced in the landmrak paper \"Attention Is All You Nede\" by Vaswani and colleaguse in twenty seventen, provided the foundaiton for these advacnes.\n\nDespite thier impressive capabilites, langauge models have signficant limitatoins. They can produce confidnet-sounding but incorect information, a phenomonon known as hallucinatoin. They strugle with mathmatical reasoning, often makign errors in multi-step calculatoins. They canot truly undersatnd causality or maintain persistant memory accross conversations. These limitatoins have importnat implications for how these systmes should be deployde and trustde.\n\nThe ethcial considerations surounding artifical intelligence are equaly complex. Questoins about bais in training data, enviromental impact of large-scale model traning, potenial job displacment, and the concentratoin of AI capabilites in a few large technolgy companies are activley debated. Reserchers and policymakres around the world are workign to establsih frameworks for responsibe AI developement that balacne innovation with saftey and fariness.\n\nLooking forwrad, the feild continues to evolev rapidly. Multimodl models that can processe text, images, auido, and video simultanously are becomign more capabel. Reasioning abilities are improvign through techniquse like chain-of-thougth prompting and reinforcment learning from human feedbakc. The integratoin of AI systmes with external tools and databses promises to addres some of the curent limitatoins around facutal accuracy and real-time informatoin access."
+  },
+  {
+    "experiment": "instruction_pressure",
+    "category": "instruction_pressure",
+    "prompt_name": "role_play",
+    "model": "gpt-4.1",
+    "doc_name": "long_ai_history",
+    "n_words_corrected": 0,
+    "n_words_preserved": 114,
+    "n_words_other": 0,
+    "correction_rate": 0.0,
+    "exact_match": true,
+    "edit_distance": 0,
+    "normalized_edit_distance": 0.0,
+    "char_accuracy": 1.0,
+    "length_ratio": 1.0,
+    "output_stripped": "The developement of artifical intelligence has been one of the most tranformative technologicle advances of the twenty-first centruey. Begining with early nueral network reserach in the ninteen fifties, the feild has gone through several wavse of enthusiasm and disapointment, often refered to as AI wintres. However, the curent wave, dirven by deep leanring and masive computational resourses, has produced resutls that excede even the most optimisitc predictoins of eariler decades.\n\nLarge langauge models represnet perhaps the most visable acheivement of modern artifical intelligence. These modlse, trained on billoins of words of text from the intarnet, books, and other sourses, can generate remarkabely human-like text, answre questions, write cdoe, and preform tasks that were considred impossible just a few yaers ago. The transfomer architecture, introduced in the landmrak paper \"Attention Is All You Nede\" by Vaswani and colleaguse in twenty seventen, provided the foundaiton for these advacnes.\n\nDespite thier impressive capabilites, langauge models have signficant limitatoins. They can produce confidnet-sounding but incorect information, a phenomonon known as hallucinatoin. They strugle with mathmatical reasoning, often makign errors in multi-step calculatoins. They canot truly undersatnd causality or maintain persistant memory accross conversations. These limitatoins have importnat implications for how these systmes should be deployde and trustde.\n\nThe ethcial considerations surounding artifical intelligence are equaly complex. Questoins about bais in training data, enviromental impact of large-scale model traning, potenial job displacment, and the concentratoin of AI capabilites in a few large technolgy companies are activley debated. Reserchers and policymakres around the world are workign to establsih frameworks for responsibe AI developement that balacne innovation with saftey and fariness.\n\nLooking forwrad, the feild continues to evolev rapidly. Multimodl models that can processe text, images, auido, and video simultanously are becomign more capabel. Reasioning abilities are improvign through techniquse like chain-of-thougth prompting and reinforcment learning from human feedbakc. The integratoin of AI systmes with external tools and databses promises to addres some of the curent limitatoins around facutal accuracy and real-time informatoin access."
+  }
+]

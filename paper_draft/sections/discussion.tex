@@ -1,0 +1,55 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{The Death of Glitch Tokens}
+
+Our results show that the \glitchtoken phenomenon documented by \citet{rumbelow2023solidgoldmagikarp} and subsequently studied in depth \citep{land2024fishing, li2024glitch, zhang2024glitchprober, wu2024glitchminer} is entirely resolved in the GPT-4.1 model family. Every one of the 50 tested \glitchtokens---including \magikarp, the token that launched the subfield---is reproduced perfectly by all three models. This likely reflects improvements in tokenizer training, vocabulary curation, and post-training alignment over the past two years. While this is a positive development for model reliability, it also means that \glitchtoken benchmarks are no longer useful for evaluating current-generation models and that the research community should shift attention to the new failure modes we identify.
+
+\subsection{Why Does Clean Text Fail Where Misspelled Text Succeeds?}
+
+The most surprising finding is \gptfull's paradoxical behavior: it truncates clean varied text to $\sim$50 characters at lengths $\geq$8k while perfectly reproducing 25,000 characters of misspelled text. We consider three possible explanations:
+
+\para{Anti-copying filters.}
+The model or its serving infrastructure may apply output filters designed to prevent verbatim reproduction of copyrighted or memorized text. Clean, well-formed text is more likely to match training data, triggering these filters. Misspelled text, being clearly ``original,'' may bypass them. This explanation is consistent with the growing emphasis on copyright safety in commercial LLMs.
+
+\para{Deduplication mechanisms.}
+A related possibility is that the model detects high overlap between the input and its training data and applies a truncation policy. Misspelled text, being out-of-distribution \wrt training data, would not trigger this mechanism.
+
+\para{Output length policies.}
+The truncation may reflect API-level output length restrictions that are content-dependent. The consistent length ratio of $\approx 0.005$ across different clean text lengths suggests a fixed truncation threshold rather than a gradual degradation.
+
+We cannot definitively distinguish these explanations without access to the model's internal architecture and serving infrastructure. However, the consistency and specificity of the behavior---perfectly reproducing misspelled text of equal or greater length---argues against a simple capability limitation.
+
+\subsection{Repetition as a Failure Trigger}
+
+The failure of all models on long repetitive text reveals a separate vulnerability. When input text contains many repetitions of the same passage, models exhibit two failure modes: progressive truncation (\gptomini) and hallucinated extension (\gptmini, producing 5.15$\times$ the input). These failures likely arise from the interaction between the model's attention mechanism and repeated content. In a Transformer architecture, attending over many identical segments may cause the model to lose positional grounding, leading it to either stop prematurely or fail to recognize when to stop.
+
+This finding has practical implications for applications involving templated or repetitive content, such as form generation, data entry, and code with repeated patterns.
+
+\subsection{Limitations}
+
+\para{Model coverage.}
+We tested only OpenAI models from the GPT-4.1 family. The clean-versus-misspelled asymmetry may be specific to OpenAI's serving infrastructure rather than a general property of large language models. Testing Claude, Gemini, and open-weight models such as Llama 3 would clarify the generality of our findings.
+
+\para{API versus model behavior.}
+The extreme-length truncation in \gptfull may reflect API-level output limits or safety filters rather than model-level capability limits. We set max\_tokens $= 16{,}384$, which should be sufficient for all tested lengths, but internal mechanisms may impose additional constraints that are not documented.
+
+\para{Prompt sensitivity.}
+We tested three prompt templates but the space of possible instructions is vast. Different phrasing---such as framing the task as code execution or using chain-of-thought---might elicit different behavior, particularly at extreme lengths.
+
+\para{Reproducibility.}
+All experiments used temperature $= 0$ for determinism. However, OpenAI's API does not guarantee bit-exact reproducibility across time even at temperature $= 0$, so our results represent a snapshot of model behavior at a specific point in time.
+
+\para{No open-weight baselines.}
+We could not test the original models (GPT-2, Llama-2-7B) where \glitchtokens were first discovered, limiting our ability to provide a direct before-and-after comparison within the same model family.
+
+\subsection{Broader Implications}
+
+\para{For practitioners.}
+Users relying on LLMs for faithful text copying should be aware of length-dependent failure modes. Our results suggest that breaking long texts into chunks of $<$8k characters can mitigate truncation risks. The counterintuitive finding that misspelled text is reproduced more reliably than clean text is relevant for applications involving noisy or user-generated content.
+
+\para{For model developers.}
+The clean-versus-misspelled asymmetry suggests that content-dependent output policies may have unintended side effects. A policy designed to prevent copyright-infringing reproduction inadvertently makes the model less reliable for legitimate text-copying tasks.
+
+\para{For security researchers.}
+The \glitchtoken attack surface has been substantially reduced in modern models. However, the length-based and repetition-based failure modes we identify could potentially be exploited in adversarial settings, for example by constructing inputs that trigger hallucinated extension to exhaust output token budgets.

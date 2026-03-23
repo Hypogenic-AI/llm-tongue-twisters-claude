@@ -1,0 +1,39 @@
+{
+  "total_experiments": 502,
+  "total_failures": 156,
+  "failure_rate": 0.31075697211155373,
+  "models_tested": [
+    "gpt-4.1",
+    "gpt-4.1-mini",
+    "gpt-4o-mini"
+  ],
+  "experiment_types": [
+    "glitch_token",
+    "control_token",
+    "adversarial",
+    "document_clean",
+    "document_misspelled",
+    "long_document",
+    "embedded_glitch",
+    "consistency",
+    "instruction_pressure",
+    "very_long_doc",
+    "zero_width",
+    "homoglyph",
+    "near_miss",
+    "density",
+    "glitch_in_doc",
+    "consistency_misspelled",
+    "3x_long",
+    "length_clean",
+    "length_misspelled",
+    "random_alphanum",
+    "random_words",
+    "code_errors",
+    "hex_string",
+    "extreme_length_clean",
+    "extreme_length_repetitive",
+    "extreme_length_misspelled",
+    "long_random"
+  ]
+}

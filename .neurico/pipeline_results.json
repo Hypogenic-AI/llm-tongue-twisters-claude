@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "stages": {
+    "resource_finder": {
+      "success": true,
+      "completion_marker": "/workspaces/llm-tongue-twisters-claude/.resource_finder_complete",
+      "outputs": {
+        "literature_review": "/workspaces/llm-tongue-twisters-claude/literature_review.md",
+        "resources_catalog": "/workspaces/llm-tongue-twisters-claude/resources.md",
+        "papers_dir": "/workspaces/llm-tongue-twisters-claude/papers",
+        "datasets_dir": "/workspaces/llm-tongue-twisters-claude/datasets",
+        "code_dir": "/workspaces/llm-tongue-twisters-claude/code"
+      },
+      "log_file": "/workspaces/llm-tongue-twisters-claude/logs/resource_finder_claude.log",
+      "transcript_file": "/workspaces/llm-tongue-twisters-claude/logs/resource_finder_claude_transcript.jsonl",
+      "elapsed_time": 1763.8238101005554
+    },
+    "experiment_runner": {
+      "success": true,
+      "return_code": 0,
+      "elapsed_time": 3477.359835624695,
+      "log_file": "/workspaces/llm-tongue-twisters-claude/logs/execution_claude.log",
+      "transcript_file": "/workspaces/llm-tongue-twisters-claude/logs/execution_claude_transcript.jsonl"
+    }
+  },
+  "work_dir": "/workspaces/llm-tongue-twisters-claude"
+}

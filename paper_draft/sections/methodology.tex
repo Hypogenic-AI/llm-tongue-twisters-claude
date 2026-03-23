@@ -1,0 +1,110 @@
+\section{Methodology}
+\label{sec:method}
+
+\subsection{Task Formulation}
+
+We adopt a \newterm{text reproduction paradigm}: given an input string $s$, we prompt a model $\gM$ with an instruction to reproduce $s$ exactly, yielding output $\hat{s} = \gM(s)$. We then compare $s$ and $\hat{s}$ using exact match and edit distance metrics. This paradigm is simple, model-agnostic, and directly tests whether a model can faithfully copy arbitrary content---the core question behind the ``tongue twister'' analogy.
+
+\subsection{Stimulus Categories}
+
+We constructed five categories of stimuli, summarized in \tabref{tab:stimuli}.
+
+\begin{table}[t]
+    \centering
+    \caption{Summary of stimulus categories. Each category targets a different hypothesized failure mode. $N$ denotes the number of unique stimuli per category.}
+    \label{tab:stimuli}
+    \begin{tabular}{@{}llrl@{}}
+        \toprule
+        \textbf{Category} & \textbf{Source} & \textbf{$N$} & \textbf{Target failure mode} \\
+        \midrule
+        Glitch tokens & GlitchProber, Magikarp data & 50 & Tokenizer-level anomalies \\
+        Control tokens & Hand-crafted & 50 & Baseline (no expected failure) \\
+        Adversarial strings & Constructed & 20 & Unicode tricks, homoglyphs \\
+        Misspelled documents & Hand-crafted pairs & 5 pairs & Auto-correction behavior \\
+        Extreme-length texts & Generated & Variable & Length-dependent truncation \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\para{Glitch tokens.}
+We selected 50 known \glitchtokens from the GlitchProber ground truth dataset \citep{zhang2024glitchprober} and the Magikarp verification data \citep{land2024fishing}. These include tokens previously shown to cause failures in GPT-2, GPT-3, and early GPT-4, such as \magikarp, \texttt{TheNitromeFan}, and \texttt{rawdownloadcloneembedreportprint}. We filtered to printable strings of $\geq$3 characters, excluding special tokens like \texttt{<unk>}.
+
+\para{Control tokens.}
+We constructed 50 common English words matched in length distribution to the glitch token set, serving as a baseline with no expected failures.
+
+\para{Adversarial strings.}
+We constructed 20 strings designed to challenge character-level processing: Cyrillic homoglyphs (\eg \texttt{p} replaced with Cyrillic \texttt{\textrm{p}}), zero-width Unicode characters, combining diacritics, escaped Unicode sequences, and emoji tag sequences.
+
+\para{Misspelled documents.}
+We created 5 document pairs (clean and misspelled versions) ranging from 50 to 1,500 words. Misspellings were introduced via controlled character transpositions (1--2 adjacent character swaps per word) using a fixed random seed for reproducibility. We additionally tested misspelling density as a variable, creating versions of a single document at 0\%, 5\%, 10\%, 20\%, 30\%, and 50\% word-level misspelling rates.
+
+\para{Extreme-length texts.}
+We generated texts at lengths from 500 to 25,000 characters in three content types: \emph{varied} (diverse vocabulary and sentence structure), \emph{misspelled} (same content with character transpositions), and \emph{repetitive} (a single paragraph repeated to reach the target length).
+
+\subsection{Models}
+
+We evaluate three models from OpenAI's GPT-4.1 family, representing a range of model sizes within the same generation:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{@{}lll@{}}
+        \toprule
+        \textbf{Model} & \textbf{Provider} & \textbf{Type} \\
+        \midrule
+        \gptfull & OpenAI & Full-size \\
+        \gptmini & OpenAI & Compact \\
+        \gptomini & OpenAI & Compact (prior gen.) \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Prompt Design}
+
+We use a direct reproduction prompt as our primary template:
+
+\begin{quote}
+\textit{``Repeat the following text exactly, character for character. Output ONLY the text, nothing else.''}
+\end{quote}
+
+\noindent followed by the stimulus text. We tested two additional prompt variants (instruction-based and code-framed) in preliminary experiments and found no significant difference in reproduction accuracy; we report results using the direct template throughout.
+
+\subsection{Evaluation Metrics}
+
+\para{Exact match (EM).}
+A binary indicator: $\text{EM}(s, \hat{s}) = \mathbf{1}[s = \hat{s}]$.
+
+\para{Normalized edit distance (NED).}
+Levenshtein edit distance normalized by the maximum of the two string lengths:
+\begin{equation}
+    \text{NED}(s, \hat{s}) = \frac{\text{Lev}(s, \hat{s})}{\max(|s|, |\hat{s}|)}
+\end{equation}
+\noindent where $|{\cdot}|$ denotes string length. NED $= 0$ indicates a perfect match; NED $= 1$ indicates complete dissimilarity.
+
+\para{Length ratio.}
+The ratio $|\hat{s}| / |s|$, which captures truncation (ratio $< 1$) and hallucinated extension (ratio $> 1$).
+
+\subsection{Experimental Protocol}
+
+We conducted six rounds of experiments (V1--V6) with escalating difficulty, summarized in \tabref{tab:rounds}.
+
+\begin{table}[t]
+    \centering
+    \caption{Experimental rounds. Each round targets a specific phenomenon with increasing difficulty.}
+    \label{tab:rounds}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{@{}clll@{}}
+        \toprule
+        \textbf{Round} & \textbf{Focus} & \textbf{Stimuli} & \textbf{Models} \\
+        \midrule
+        V1 & Token reproduction & 120 tokens $\times$ 2 templates & \gptfull \\
+        V2 & Long docs, embedded glitch tokens & $\sim$25 tests & \gptfull \\
+        V3 & Cross-model, zero-width chars, homoglyphs & $\sim$80 tests & All 3 \\
+        V4 & Misspelling density (0--50\%) & $\sim$30 tests & All 3 \\
+        V5 & Length scaling (500--10k chars) & $\sim$70 tests & All 3 \\
+        V6 & Extreme length (8k--25k chars) & $\sim$36 tests & All 3 \\
+        \bottomrule
+    \end{tabular}
+    }
+\end{table}
+
+All API calls used temperature $= 0$ for deterministic output and max\_tokens $= 16{,}384$ to allow long reproductions. We used 3 retries with exponential backoff for transient API errors. The total cost was approximately 500 API calls.

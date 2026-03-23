@@ -1,0 +1,6 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We conducted a systematic evaluation of text reproduction fidelity in three GPT-4.1-family models across five categories of stimuli and approximately 500 test cases. Our central finding is that the landscape of LLM ``tongue twisters'' has shifted dramatically: classic \glitchtokens are completely resolved, and models faithfully preserve misspellings without auto-correcting. However, new failure modes have emerged at extreme text lengths. Most notably, \gptfull paradoxically truncates clean text at $\geq$8k characters while perfectly reproducing 25k characters of misspelled text---a content-dependent asymmetry that suggests output filtering rather than a capability limitation. All models also fail on long repetitive text, with \gptmini producing output 5.15$\times$ the input length in the most severe case.
+
+These findings have direct implications for any application that relies on LLMs for faithful text reproduction, from code copying to data transcription. Future work should test whether the clean-versus-misspelled asymmetry generalizes across model families, investigate the mechanism behind content-dependent truncation, and explore whether chain-of-thought or chunked reproduction strategies can overcome length-based limitations.
